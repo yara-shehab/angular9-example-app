@@ -1,7 +1,9 @@
-FROM node:12.16.2
-WORKDIR /usr/local/app
-COPY ./ /usr/local/app/
-RUN npm ci
+FROM node:10-alpine as build-step
+RUN mkdir -p /app
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+COPY . /app
 RUN npm run build --prod
 # Serve app with nginx server
 FROM nginx:latest
