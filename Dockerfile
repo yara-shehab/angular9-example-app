@@ -1,11 +1,10 @@
-### STAGE 1: Build ###
-FROM node:12.18.2-alpine AS buildxyz
-WORKDIR /usr/src/app
-COPY package.json package-lock.json ./
-RUN npm install
+# stage 1 build
+FROM node:latest as node
+WORKDIR /app
 COPY . .
-RUN npm run build
-### STAGE 2: Run ###
-FROM nginx:1.19-alpine
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=buildxyz /usr/src/app/dist/angular-client-app /usr/share/nginx/html
+RUN npm install
+RUN npm run build --prod
+
+# stage 2 setup
+FROM nginx:alpine
+COPY --from=node /app/dist/angular-app /usr/share/nginx/htmll
