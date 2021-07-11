@@ -10,8 +10,8 @@ node {
        sh("docker push $REG:latest")
    }
    stage('Transfer files and deploy'){
-       sh("gcloud container clusters get-credentials caresquarepp --zone us-central1-a --project caresquare-64cff")
-       sh("kubectl apply -f deployment.yml -n frontend")
+       sh("gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project coffee-fpal")
+       sh("kubectl apply -f deployment.yml")
        sh("kubectl set image deployment/myapp myapp=$REG:$BRANCH_NAME$BUILD_NUMBER -n frontend")
    }
 }
