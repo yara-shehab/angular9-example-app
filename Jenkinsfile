@@ -1,7 +1,6 @@
 node {
 
    stage('Build') {
-        sh("git clone https://github.com/yara-shehab/angular9-example-app ")
         sh("cd angular9-example-app/ ")
         sh("pwd")
         sh("docker build -t myapp .")
