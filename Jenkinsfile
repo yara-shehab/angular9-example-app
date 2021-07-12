@@ -9,7 +9,6 @@ node {
       // **       in the global configuration.           
    }
    stage('Build') {
-        sh("ls")
         sh("docker build -t myapp .")
   }
     stage('Tag and Push Image to GITHUB'){
