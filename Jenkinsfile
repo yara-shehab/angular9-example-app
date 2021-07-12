@@ -1,7 +1,7 @@
 node {
 
    stage('Build') {
-        sh("docker build . -t myapp")
+        sh("docker build -t myapp .")
   }
     stage('Tag and Push Image to GITHUB'){
        sh("docker tag myapp  $REG:$BRANCH_NAME$BUILD_NUMBER")
