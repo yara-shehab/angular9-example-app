@@ -1,4 +1,12 @@
 node {
+   def GIT_REG = "github.com/yara-shehab/angular9-example-app"
+   stage('Preparation') { // for display purposes
+      // Get some code from a GitHub repository
+       git branch: 'master',
+    url: 'https://github.com/yara-shehab/angular9-example-app.git'
+      // Get the Maven tool.
+      // ** NOTE: This 'M3' Maven tool must be configured
+      // **       in the global configuration.           
 
    stage('Build') {
         sh("cd angular9-example-app/ ")
