@@ -9,7 +9,6 @@ node {
       // **       in the global configuration.           
    }
    stage('Build') {
-        sh("cd angular9-example-app/ ")
         sh("pwd")
         sh("docker build -t myapp .")
   }
