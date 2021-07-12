@@ -1,6 +1,7 @@
 node {
 
    stage('Build') {
+        sh("pwd")
         sh("docker build -t myapp .")
   }
     stage('Tag and Push Image to GITHUB'){
